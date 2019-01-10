@@ -37,7 +37,7 @@ function scrapeTags(obj, part) {
 };
 
 function showStatus(obj) {
-
+	console.log(urlAbsolute);
 	for(let prop in obj) {
 		if(obj[prop].length > 1) {
 			if(prop == "img") {
