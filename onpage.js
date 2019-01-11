@@ -44,22 +44,26 @@ function showStatus(obj) {
 				console.log(`Images: ${obj[prop].length}`);
 			} if(prop == "links") {
 				console.log(`Links: ${obj[prop].length}`);
-			} if(prop != "img" && prop != "links") {
-				
+			} if(prop != "img" && prop != "links") {	
 				obj[prop].map(tag => {
 					if(tag.outerHTML) {
-						console.log(`${prop}:	${tag.outerHTML}`);
+						/*console.log(`${prop}:	${tag.outerHTML}`);*/
+						status.push({tag:prop, html:tag.outerHTML});
 					} else {
-						console.log(tag);
+						/*console.log(tag);*/
+						status.push({tag:prop, html:tag});
 					}
 				});
 			}
 		} if(obj[prop].length == 0) {
-			console.log(`${prop}: No detected`); 
+			/*console.log(`${prop}: No detected`); */
+			status.push({tag:prop, html:`No detected`})
 		} if(obj[prop].length == 1)  {
-			console.log(`${prop}:	${obj[prop][0].outerHTML}`);
+			/*console.log(`${prop}:	${obj[prop][0].outerHTML}`);*/
+			status.push({tag:prop, html:obj[prop][0].outerHTML});
 		}
 	}	
+	console.table(status);
 };
 
 scrapeTags(headSelectors, head);
